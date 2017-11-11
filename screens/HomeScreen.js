@@ -24,7 +24,7 @@ export default class HomeScreen extends Component{
                 </Text>
                 <Button
                     onPress = { () => navigate('Login')}
-                    title = 'Login'
+                    title = 'Login/Signup'
                     color = 'purple'
                 />
             </View>
