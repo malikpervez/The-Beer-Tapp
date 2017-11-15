@@ -23,8 +23,8 @@ export default class HomeScreen extends Component{
                     The Beer Tapp
                 </Text>
                 <Button
-                    onPress = { () => navigate('Login')}
-                    title = 'Login/Signup'
+                    onPress = { () => navigate('Main')}
+                    title = 'Get Started'
                     color = 'purple'
                 />
             </View>

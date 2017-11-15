@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Button, Text } from 'react-native';
+import { View, Button, Text, ActivityIndicator } from 'react-native';
 import { TitledInput } from '../common/TitledInput';
 import firebase from 'firebase';
-const Spinner = require('../common/Spinner');
+import HomeScreen from './HomeScreen'
+
 
 class LoginScreen extends Component {
     state = { email: '', password: '' };
@@ -20,10 +21,11 @@ class LoginScreen extends Component {
                         this.setState({ error: 'Authentication failed.', loading: false });
                     });
             });
+           
     }
     renderButtonOrSpinner() {
         if (this.state.loading) {
-            return <Spinner />;    
+            return < ActivityIndicator />;    
         }
         return <Button onPress={this.onLoginPress.bind(this)} title="Log in" />;
     }
