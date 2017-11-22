@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import { View, Text, Picker, StyleSheet } from 'react-native'
+import { View, Text, Picker, StyleSheet, ListView } from 'react-native'
 
 class BeerPicker extends Component {
   constructor(props){
       super(props);
       this.state = {
-          beer: []
-      };
+          dataSource: new ListView.DataSource({
+              rowHasChanged: (row1, row2) => row1 !== row2,
+          }).cloneWithRows(['string1', 'string2', 'string3']),
+      }; // need to render into list view
       this.addBeer = this.addBeer.bind(this);
   }
-  addBeer(newbeer){ 
+  addBeer(itemValue, itemIndex){ 
     this.setState({
-        beer: [...this.state.beer, newbeer]
+        beer: [...this.state.beer, itemValue]
     });
-}
+  }
+
+  renderRow(data) {
+    return (
+      <Text>{`\u2022 ${data}`}</Text>
+    );
+  }
+
    render() {
       return (
          <View>
-            <Picker selectedValue = {this.state.beer} onValueChange = {this.addBeer}>
+            <Picker selectedValue = {this.state.dataSource} onValueChange = {this.addBeer}>
+               <Picker.item label = 'Choose Beer' value = 'none' />
                <Picker.Item label = "IPA" value = "ipa" />
                <Picker.Item label = "Pilsner" value = "pilsner" />
                <Picker.Item label = "Stout" value = "stout" />
             </Picker>
-            <Text style = {styles.text}>{this.state.beer}</Text>
+            <ListView
+            dataSource={this.state.beer}
+            renderRow={this.renderRow}
+            />
+            
          </View>
       )
    }
@@ -33,6 +47,6 @@ const styles = StyleSheet.create({
    text: {
       fontSize: 30,
       alignSelf: 'center',
-      color: 'red'
+      color: 'black'
    }
 })
