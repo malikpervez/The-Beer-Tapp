@@ -4,12 +4,11 @@ import { View, Text, Picker, StyleSheet, ListView } from 'react-native'
 class BeerPicker extends Component {
   constructor(props){
       super(props);
-      this.state = {
-          dataSource: new ListView.DataSource({
-              rowHasChanged: (row1, row2) => row1 !== row2,
-          }).cloneWithRows(['string1', 'string2', 'string3']),
-      }; // need to render into list view
-      this.addBeer = this.addBeer.bind(this);
+        const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
+        this.state = {
+            beer = [],
+            dataSource: ds.cloneWithRows(['row1', 'row2']),
+        };
   }
   addBeer(itemValue, itemIndex){ 
     this.setState({
