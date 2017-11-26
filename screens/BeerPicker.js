@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Picker, StyleSheet, ListView } from 'react-native'
 
 const ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2});
-
+//send in data through brewerydb
 export default class BeerPicker extends Component {
     constructor(props){
       super(props);
