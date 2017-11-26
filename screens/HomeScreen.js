@@ -48,10 +48,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     welcome: {
-      fontSize: 40,
+      fontFamily: 'Vacations in Phuket',
+      fontSize: 50,
       textAlign: 'center',
       margin: 10,
-      color: 'white'
+      color: 'orange'
     },
     instructions: {
       textAlign: 'center',
