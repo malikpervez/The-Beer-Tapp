@@ -11,12 +11,12 @@ import firebase from 'firebase';
 import HomeScreen from './screens/HomeScreen';
 import SignupScreen from './screens/SignupScreen';
 import LoginScreen from './screens/LoginScreen';
-import Beer from './screens/Main'
+import Beer from './screens/BeerPicker'
 
 
 const BeerTapp = StackNavigator({
   Home: { screen: HomeScreen },
-  Main: { screen: Beer }
+  Main: { screen: Beer },
 
 });
 

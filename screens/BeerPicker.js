@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Picker, StyleSheet, ListView } from 'react-native'
+import { View, Text, Picker, StyleSheet, ListView, Button } from 'react-native'
 
 const ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2});
-//send in data through brewerydb
+
 export default class BeerPicker extends Component {
     constructor(props){
       super(props);
@@ -39,6 +39,7 @@ export default class BeerPicker extends Component {
     }
 
     render() {
+      const { navigate } = this.props.navigation;
       let items = this.state.items.map((item, index) => {
         return (<Picker.item label={item.label} value={item.value} key={index}/>);
       });
@@ -51,6 +52,10 @@ export default class BeerPicker extends Component {
           <ListView
             dataSource={this.state.beerDataSource}
             renderRow={this.renderRow}/>
+          <Button
+            onPress = { () => navigate('Home')}
+            title = 'Next'
+            color = 'purple'/>
         </View>
       )
     }
